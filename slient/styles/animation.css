@@ -1,0 +1,101 @@
+@-webkit-keyframes top-in{
+    from {
+        top: -500px;
+        opacity: 0;
+    }
+    to {
+        top: 50px;
+        opacity: 1;
+    }
+}
+.top-in {
+    -webkit-animation-name: top-in;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-delay: .2s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: both;
+}
+@-webkit-keyframes top-out{
+    from {
+        opacity: 1;
+        top: 50px;
+    }
+    to {
+        opacity: 0;
+        top: -500px;
+    }
+}
+.top-out {
+    -webkit-animation-name: top-out;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-delay: .2s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: both;
+}
+
+@-webkit-keyframes left-in{
+    from {
+        left: 15%;
+        opacity: 0;
+        top: 50px;
+    }
+    to {
+        left: 50%;
+        opacity: 1;
+        top: 50px;
+    }
+}
+.left-in {
+    -webkit-animation-name: left-in;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-delay: .2s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: both;
+}
+@-webkit-keyframes left-out{
+    from {
+        opacity: 1;
+        top: 50px;
+    }
+    to {
+        opacity: 0;
+        left: -50%;
+        top: 50px;
+    }
+}
+.left-out {
+    -webkit-animation-name: left-out;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-delay: .2s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: both;
+}
+
+
+
+
+
+@-webkit-keyframes gradatim-in{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@-webkit-keyframes gradatim-out{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.modal-backdrop{
+    -webkit-animation-name: gradatim-in;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-delay: .2s;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: both;
+}
+
