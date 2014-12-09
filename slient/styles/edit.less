@@ -12,8 +12,10 @@ body {
         cursor: default;
         .head-tool {
             float: left;
-            line-height: 50px;
+            line-height: @headerHeight;
             width: 100%;
+            height: 100%;
+            overflow: hidden;
             [class^="icon-"], [class*=" icon-"] {
                 padding: 5px;
                 &:hover {
@@ -238,6 +240,42 @@ body {
                     }
                 }
             }
+            .shape-edit{
+                .tool-select{
+                    height: 150px;
+                    width: 180px;
+                    display: table-cell;
+                    vertical-align: middle;
+                    border: 4px solid #cfcfcf;
+                    box-sizing: border-box;
+                    .shape-content{
+                        width: 100px;
+                        height: 100px;
+                        margin: auto;
+                        display: block;
+                    }
+                    .shape-replace{
+                        opacity: 0;
+                        -webkit-transition: opacity 350ms ease-in-out;
+                        -moz-transition: opacity 350ms ease-in-out;
+                        -ms-transition: opacity 350ms ease-in-out;
+                        transition: opacity 350ms ease-in-out;
+                    }
+                    &:hover{
+                        .shape-replace{
+                            opacity: 1;
+                        }
+                    }
+                }
+                .tool-shape-color{
+                    .color-pick-trigger{
+                        background: #000;
+                        width: 80%;
+                        margin: auto;
+                        height: 24px;
+                    }
+                }
+            }
         }
         .toolbar[data-type="edit"] {
             left: 200px;
@@ -262,21 +300,15 @@ body {
             -webkit-box-shadow: inset 0 0 2px #CFCFCF;
             -moz-box-shadow: inset 0 0 2px #CFCFCF;
             box-shadow: inset 0 0 2px #CFCFCF;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+            word-wrap: break-word;
             .component {
                 position: absolute;
-                padding: 5px;
                 min-height: 30px;
                 min-width: 30px;
                 .content {
                     text-align: center;
                     min-height: 25px;
-                    font-size: 24px;
-                    img {
-                        width: 250px;
-                    }
+                    float: left;
                 }
             }
             .ui-selected {
@@ -287,6 +319,7 @@ body {
                     left: 0;
                     width: 100%;
                     height: 100%;
+                    pointer-events: none;
                     .mark {
                         position: absolute;
                         width: 10px;
@@ -294,6 +327,7 @@ body {
                         background: white;
                         border-radius: 10px;
                         border: 1px solid #0099ff;
+                        pointer-events: auto;
                     }
                     .tl {
                         left: -6px;
@@ -341,7 +375,37 @@ body {
             }
             .image {
                 .icon-picture {
-                    font-size: 250px;
+                    font-size: 450px;
+                }
+                .content{
+                    img {
+                        width: 450px;
+                        float: left;
+                    }
+                }
+            }
+            .textBox{
+                .content{
+                    font-size: 48px;
+                    float: left;
+                }
+            }
+            .shapeView {
+                .content{
+                    svg{
+                        float: left;
+                    }
+                }
+            }
+
+            .guides{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                .guides-line{
+                    position: absolute;
+                    z-index: 1000;
+                    border: 1px dashed rgb(253, 221, 0);
                 }
             }
         }
@@ -390,11 +454,14 @@ body {
                 .componentContainer {
                     position: absolute;
                     line-height: normal;
+                    word-wrap: break-word;
+                    font-size: 48px;
+                    text-align: center;
                     img{
-                        width: 250px;
+                        width: 450px;
                     }
                     .icon-picture{
-                        font-size: 250px;
+                        font-size: 450px;
                     }
                 }
             }
@@ -413,13 +480,20 @@ body {
         right: 181px;
         top: 130px;
         width: 120px;
-        background: #000;
+        background: #33ccff;
         color: #fff;
         text-align: center;
         z-index: 1050;
         .panel-item {
             margin: 10px;
-            border-bottom: 1px solid rgb(81, 81, 81);
+            border-bottom: 1px solid #8EE3F7;
+        }
+    }
+    .toolbar-panel.chunk{
+        width: 230px;
+        .panel-item{
+            width: 35px;
+            float: left;
         }
     }
 }
@@ -455,4 +529,10 @@ body {
 }
 .hide {
     display: none;
+}
+p{
+    margin: 5px;
+}
+td{
+    min-width: 25px;
 }

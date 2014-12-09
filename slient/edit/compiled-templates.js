@@ -2,82 +2,6 @@ define(['handlebars'], function(Handlebars) {
 
 this["JST"] = this["JST"] || {};
 
-this["JST"]["etchExtension/align"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
-
-
-  buffer += "<span class=\"etch-";
-  if (helper = helpers.button) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.button); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + " icon-paragraph-";
-  if (helper = helpers.icon) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.icon); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "\" title=\"";
-  if (helper = helpers.title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "\"></span>\n";
-  return buffer;
-  });
-
-this["JST"]["etchExtension/colorChooser"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
-
-
-  buffer += "<input class=\"color-chooser colorpicker etch-";
-  if (helper = helpers.button) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.button); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "\" />";
-  return buffer;
-  });
-
-this["JST"]["etchExtension/defaultButton"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
-
-
-  buffer += "<span class=\"etch-";
-  if (helper = helpers.button) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.button); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + " icon-";
-  if (helper = helpers.button) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.button); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "\" title=\"";
-  if (helper = helpers.title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "\"></span>\n";
-  return buffer;
-  });
-
-this["JST"]["etchExtension/fontFamilySelection"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  
-
-
-  return "<div class=\"btn-group\">\n	<button class=\"btn btn-inverse dropdown-toggle btn-small fontFamilyBtn\" data-toggle=\"dropdown\" title=\"Choose the font family\"><span class=\"text\">Lato</span><span class=\"caret\"></span></button>\n	<ul class=\"dropdown-menu menuBarOption\" data-option=\"fontFamily\">\n		<li>	\n				<a class=\"宋体\" href=\"#\" data-value=\"'宋体', sans-serif\">宋体</a>\n				<a class=\"楷体\" href=\"#\" data-value=\"'楷体', sans-serif\">楷体</a>\n				<a class=\"黑体\" href=\"#\" data-value=\"'黑体', sans-serif\">黑体</a>\n				<a class=\"魏碑\" href=\"#\" data-value=\"'魏碑', sans-serif\">魏碑</a>\n                  <a class=\"lato\" href=\"#\" data-value=\"'Lato', sans-serif\">Lato</a>\n                  <a class=\"leaguegothic\" href=\"#\" data-value=\"'League Gothic', sans-serif\">League Gothic</a>\n                  <a class=\"droidsansmono\" href=\"#\" data-value=\"'Droid Sans Mono', monospace\">Droid Sans Mono</a>\n                  <a class=\"ubuntu\" href=\"#\" data-value=\"'Ubuntu', sans-serif\">Ubuntu</a>\n                  <a class=\"abril\" href=\"#\" data-value=\"'Abril Fatface', cursive\">Abril</a>\n                  <a class=\"hammersmith\" href=\"#\" data-value=\"'Hammersmith One', sans-serif\">Hammersmith One</a>\n                  <a class=\"fredoka\" href=\"#\" data-value=\"'Fredoka One', cursive\">Fredoka One</a>\n                  <a class=\"gorditas\" href=\"#\" data-value=\"'Gorditas', cursive\">Gorditas</a>\n                  <a class=\"pressstart\" href=\"#\" data-value=\"'PressStart2P', cursive\">Press Start 2P</a>\n		</li>\n	</ul>\n</div>";
-  });
-
-this["JST"]["etchExtension/fontSizeSelection"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  
-
-
-  return "<div class=\"btn-group\">\n	<button class=\"btn btn-small btn-inverse dropdown-toggle\" data-toggle=\"dropdown\" title=\"Choose the font size\">\n		<span class=\"text fontSizeReadout\">72</span>\n		<span class=\"caret\"></span>\n	</button>\n	<ul class=\"dropdown-menu menuBarOption\" data-option=\"fontSize\">\n		<li>\n			<a href=\"#\" data-value=\"144\">144</a>\n			<a href=\"#\" data-value=\"96\">96</a>\n			<a href=\"#\" data-value=\"72\">72</a>\n			<a href=\"#\" data-value=\"64\">64</a>\n			<a href=\"#\" data-value=\"48\">48</a>\n			<a href=\"#\" data-value=\"36\">36</a>\n			<a href=\"#\" data-value=\"24\">24</a>\n			<a href=\"#\" data-value=\"16\">16</a>\n			<a href=\"#\" data-value=\"12\">12</a>\n		</li>\n     </ul>\n</div>";
-  });
-
 this["JST"]["header/Header"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
@@ -268,7 +192,7 @@ function program2(depth0,data) {
   if (helper = helpers.width) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.width); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\">\r\n";
+    + "px\">\r\n";
   return buffer;
   }
 
@@ -276,6 +200,40 @@ function program4(depth0,data) {
   
   
   return "\r\n	<div class=\"icon-picture\"></div>\r\n";
+  }
+
+  options={hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data}
+  if (helper = helpers.attributes) { stack1 = helper.call(depth0, options); }
+  else { helper = (depth0 && depth0.attributes); stack1 = typeof helper === functionType ? helper.call(depth0, options) : helper; }
+  if (!helpers.attributes) { stack1 = blockHelperMissing.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data}); }
+  if(stack1 || stack1 === 0) { return stack1; }
+  else { return ''; }
+  });
+
+this["JST"]["slideSnapshot/draw/Shape"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); partials = this.merge(partials, Handlebars.partials); data = data || {};
+  var stack1, helper, options, self=this, functionType="function", blockHelperMissing=helpers.blockHelperMissing;
+
+function program1(depth0,data) {
+  
+  var buffer = "", stack1, helper, options;
+  buffer += "\r\n";
+  stack1 = self.invokePartial(partials.ComponentContainer, 'ComponentContainer', depth0, helpers, partials, data);
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\r\n	";
+  options={hash:{},inverse:self.noop,fn:self.program(2, program2, data),data:data}
+  if (helper = helpers.shapeSvg) { stack1 = helper.call(depth0, options); }
+  else { helper = (depth0 && depth0.shapeSvg); stack1 = typeof helper === functionType ? helper.call(depth0, options) : helper; }
+  if (!helpers.shapeSvg) { stack1 = blockHelperMissing.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(2, program2, data),data:data}); }
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\r\n</div>\r\n</div>\r\n";
+  return buffer;
+  }
+function program2(depth0,data) {
+  
+  var buffer = "";
+  return buffer;
   }
 
   options={hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data}
@@ -305,9 +263,13 @@ function program1(depth0,data) {
   if (helper = helpers.height) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.height); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "px; background:";
-  if (helper = helpers.background) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.background); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += "px; color: ";
+  if (helper = helpers.textColor) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.textColor); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "; background:";
+  if (helper = helpers.bgColor) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.bgColor); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "; line-height:";
   if (helper = helpers.lineSpacing) { stack1 = helper.call(depth0, {hash:{},data:data}); }
@@ -317,7 +279,19 @@ function program1(depth0,data) {
   if (helper = helpers.opacity) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.opacity); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += ";\">\r\n";
+  buffer += "; border: ";
+  stack1 = ((stack1 = ((stack1 = (depth0 && depth0.border)),stack1 == null || stack1 === false ? stack1 : stack1.width)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1);
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "px ";
+  stack1 = ((stack1 = ((stack1 = (depth0 && depth0.border)),stack1 == null || stack1 === false ? stack1 : stack1.style)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1);
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += " ";
+  stack1 = ((stack1 = ((stack1 = (depth0 && depth0.border)),stack1 == null || stack1 === false ? stack1 : stack1.color)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1);
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "; border-radius: ";
+  stack1 = ((stack1 = ((stack1 = (depth0 && depth0.border)),stack1 == null || stack1 === false ? stack1 : stack1.radius)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1);
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "px;\">\r\n";
   stack1 = helpers['if'].call(depth0, (depth0 && depth0.link), {hash:{},inverse:self.noop,fn:self.program(2, program2, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\r\n";
@@ -496,10 +470,47 @@ function program1(depth0,data) {
   else { return ''; }
   });
 
+this["JST"]["unit/shape/ComponentTool"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  
+
+
+  return "<span class=\"tl mark\" data-delta=\"size\" data-place=\"tl\"></span>\r\n<span class=\"tr mark\" data-delta=\"size\" data-place=\"tr\"></span>\r\n<span class=\"bl mark\" data-delta=\"size\" data-place=\"bl\"></span>\r\n<span class=\"br mark\" data-delta=\"size\" data-place=\"br\"></span>";
+  });
+
+this["JST"]["unit/shape/ShapeTool"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var stack1, helper, options, functionType="function", escapeExpression=this.escapeExpression, self=this, blockHelperMissing=helpers.blockHelperMissing;
+
+function program1(depth0,data) {
+  
+  var buffer = "", stack1, helper;
+  buffer += "\r\n<div class=\"edit-tool-list\">\r\n	<div class=\"tool-select\">\r\n		<span class=\"shape-content\">";
+  if (helper = helpers.content) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.content); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "</span>\r\n		<span class=\"shape-replace\">replace</span>\r\n	</div>\r\n	<div class=\"tool-shape-color\">\r\n		<div class=\"tool-content\">图形颜色:</div>\r\n		<div class=\"color-pick-trigger\" data-nature=\"color\" style=\"background:";
+  if (helper = helpers.color) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.color); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\"></div>\r\n	</div>\r\n</div>\r\n";
+  return buffer;
+  }
+
+  options={hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data}
+  if (helper = helpers.attributes) { stack1 = helper.call(depth0, options); }
+  else { helper = (depth0 && depth0.attributes); stack1 = typeof helper === functionType ? helper.call(depth0, options) : helper; }
+  if (!helpers.attributes) { stack1 = blockHelperMissing.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data}); }
+  if(stack1 || stack1 === 0) { return stack1; }
+  else { return ''; }
+  });
+
 this["JST"]["unit/Component"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression;
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
   buffer += "<div class=\"content\" style=\"border:"
@@ -510,7 +521,11 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.border)),stack1 == null || stack1 === false ? stack1 : stack1.color)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
     + "; border-radius: "
     + escapeExpression(((stack1 = ((stack1 = (depth0 && depth0.border)),stack1 == null || stack1 === false ? stack1 : stack1.radius)),typeof stack1 === functionType ? stack1.apply(depth0) : stack1))
-    + "px;\"></div>\r\n<div class=\"component-tool\"></div>\r\n";
+    + "px; opacity: ";
+  if (helper = helpers.opacity) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.opacity); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + ";\"></div>\r\n<div class=\"component-tool\"></div>\r\n";
   return buffer;
   });
 
@@ -552,7 +567,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<span class=\"cr mark\" data-delta=\"width\"></span>\r\n";
+  return "<span class=\"cl mark\" data-delta=\"width\"></span>\r\n<span class=\"cr mark\" data-delta=\"width\"></span>\r\n";
   });
 
 this["JST"]["unit/textbox/TextBoxTool"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {

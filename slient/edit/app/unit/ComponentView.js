@@ -4,8 +4,9 @@ define(["libs/backbone",
 	"app/deck/ComponentCommands",
 	"communal/widgets/DeltaDragControl",
 	"communal/undo_support/CmdListFactory",
-	"communal/interactions/TouchBridge"],
-	function(Backbone, Math2, key, ComponentCommands, DeltaDragControl, CmdListFactory, TouchBridge) {
+	"communal/interactions/TouchBridge",
+	"communal/widgets/Guides"],
+	function(Backbone, Math2, key, ComponentCommands, DeltaDragControl, CmdListFactory, TouchBridge, Guides) {
 		var undoHistory = CmdListFactory.managedInstance('editor');
 
 		/**
@@ -36,21 +37,23 @@ define(["libs/backbone",
 				this._dragging = false;
 				this.allowDragging = true;
 				
-				this.model.on("change:selected", this._selectionChanged, this);
 				this.model.on("unrender", this._unrender, this);
-				this._mouseup = this.mouseup.bind(this);
-				this._mousemove = this.mousemove.bind(this);
-				this.mousedown = this.mousedown.bind(this);
-				this._deltaDrags = [];
+				this.model.on("change:selected", this._selectionChanged, this);
 				this.model.on("change:x", this._xChanged, this);
 				this.model.on("change:y", this._yChanged, this);
+				this.model.on('change:opacity', this._opacityChanged, this);
+				this.model.on('change:border', this._borderChanged, this);
 
 				this.model.on("dragStart", this.dragStart, this);
 				this.model.on("drag", this.drag, this);
 				this.model.on("dragStop", this.dragStop, this);
 
-				this._toDispose = [];
 				var $doc = $(document);
+				this._deltaDrags = [];
+				this._toDispose = [];
+				this._mouseup = this.mouseup.bind(this);
+				this._mousemove = this.mousemove.bind(this);
+				this.mousedown = this.mousedown.bind(this);
 				this._toDispose.push(TouchBridge.on.mouseup($doc, this._mouseup));
 				this._toDispose.push(TouchBridge.on.mousemove($doc, this._mousemove));
 				TouchBridge.on.mousedown(this.$el, this.mousedown);
@@ -172,10 +175,9 @@ define(["libs/backbone",
 			 */
 			mousedown: function(e) {
 				// When component is dragged, we shouldn't start selecting anything.
-				// this.$el.parents('.ui-selectable').selectable("disable");
-				console.log('component view mousedown');
+				this.$el.parents('.ui-selectable').selectable("disable");
 				if (e.which === 1) {
-					// e.preventDefault();
+					e.preventDefault();
 					this._selectComponent(e);
 					// this.$el.css("zIndex", zTracker.next1());
 
@@ -218,7 +220,7 @@ define(["libs/backbone",
 			 */
 			mouseup: function(e) {
 				// Drag is over, selectable can be turned on again.
-				// this.$el.parents('.ui-selectable').selectable("enable");
+				this.$el.parents('.ui-selectable').selectable("enable");
 
 				var _this = this;
 				if (this.model.slide) {
@@ -255,6 +257,8 @@ define(["libs/backbone",
 					x: e.pageX,
 					y: e.pageY
 				};
+
+				Guides.resetGuides(this.$el);
 			},
 
 			/**
@@ -300,6 +304,7 @@ define(["libs/backbone",
 					}
 					this.dragStartLoc = null;
 				}
+				Guides.hide();
 			},
 
 			/**
@@ -310,7 +315,8 @@ define(["libs/backbone",
 			 * @private
 			 */
 			_xChanged: function(model, value) {
-				this.$el.css("left", value);
+				Guides.findGuides(this.$el, model);
+				this.$el.css("left", model.get('x'));
 			},
 
 			/**
@@ -321,8 +327,38 @@ define(["libs/backbone",
 			 * @private
 			 */
 			_yChanged: function(model, value) {
-				this.$el.css("top", value);
+				Guides.findGuides(this.$el, model);
+				this.$el.css("top", model.get('y'));
 			},
+
+			/**
+			 * React on border change.
+			 *
+			 * @param {Component} model
+			 * @param {number} value
+			 * @private
+			 */
+			_borderChanged: function(model, border){
+				border = border || model&&model.get('border') || this.model.get('border');
+				this.$content.css({
+					"border-color": border.color,
+					"border-style": border.style,
+					"border-width": border.width,
+					"border-radius": border.radius
+				});
+			},
+
+			/**
+			 * React on opacity change.
+			 *
+			 * @param {Component} model
+			 * @param {number} value
+			 * @private
+			 */
+			_opacityChanged: function(model, opacity){
+				this.$content.css("opacity", opacity);
+			},
+
 
 			/**
 			 * Get view template.

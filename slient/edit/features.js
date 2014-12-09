@@ -1,8 +1,7 @@
 define([
 	'framework/ServiceRegistry',
 	'app/editor/main',
-	'app/etchExtension/main',
-
+	
 	'app/module/storage/main',
 	'app/module/style/main',
 	'app/module/userinfo/main',
@@ -15,6 +14,7 @@ define([
 	// 'app/unit/table/main',
 	'app/unit/image/main',
 	'app/unit/textbox/main',
+	'app/unit/shape/main',
 	'app/unit/ComponentFactory', //make sure this under the unit 
 
 	// 'strut/storage/main',

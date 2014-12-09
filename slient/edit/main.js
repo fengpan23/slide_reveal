@@ -16,7 +16,7 @@ require.config({
 		handlebars 				: '../scripts/libs/Handlebars',
 
 		colorpicker 			: '../edit/component/spectrum/spectrum',
-		etch 					: '../edit/component/etch/etch',
+		ckeditor 				: '../edit/component/ckeditor/ckeditor',
 
 		// build - rmap
 		'app/config'							: '../edit/app/config',

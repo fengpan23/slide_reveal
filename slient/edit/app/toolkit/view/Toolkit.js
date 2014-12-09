@@ -38,6 +38,9 @@ define(['libs/backbone',
 			 * 	@param {string} component  [scope name]
 			 */
 			switchToolbar: function(slide, component, selected){
+				if(this.toolView){
+					this.toolView.dispose();
+				}
 				if(component && selected){
 					var toolView = this._creatToolView(component);
 					this.$edittoolbar.empty().append(toolView.render());
@@ -55,9 +58,6 @@ define(['libs/backbone',
 			 * @return {[new tool view]}
 			 */
 			_creatToolView: function(component){
-				if(this.toolView){
-					this.toolView.dispose();
-				}
 				return this.toolView = ComponentFactory.instance.createTool(component);
 			},
 

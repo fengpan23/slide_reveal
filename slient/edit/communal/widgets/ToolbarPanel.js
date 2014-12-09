@@ -11,14 +11,19 @@ function(Backbone) {
 
 		},
 
-		show: function(e, data, cb) {
+		show: function(data, cb) {
+			this.cb = cb;
 			this.$contents.empty();
-			var _this = this;
-			data.forEach(function(item){
+			var _this = this, e = data.e, content = data.content;
+			content.forEach(function(item){
 				_this.$contents.append('<div class="panel-item">'+ item +'</div>')
 			});
-			this.cb = cb;
-			this.$el.animate({top: e.clientY- this.$el.height()/2}, 'fast');
+			this.$el.removeClass();
+			data.className ? this.$el.addClass('toolbar-panel '+ data.className): this.$el.addClass('toolbar-panel');
+
+			var top = e.clientY- this.$el.height()/2 ;
+			top = top > 0 ? top : 5;
+			this.$el.animate({top: top}, 'fast');
 			this.$el.show();
 
 			var _this = this;

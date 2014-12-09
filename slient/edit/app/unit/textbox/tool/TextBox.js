@@ -51,9 +51,9 @@ define(['../../ComponentTool',
 			},
 
 			_triggerLinespacing: function(e){
-				var _this, linespacingValue = ['1.5', '2', '2.5'];
+				var _this, data = {content: ['1.5', '2', '2.5'], e: e};
 				_this = this;
-				this._toolbarPanel.show(e, linespacingValue, function(value){
+				this._toolbarPanel.show(data, function(value){
 					$(e.currentTarget).html(value);
 					_this.model.set('lineSpacing', value);
 				});

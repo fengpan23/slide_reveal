@@ -60,7 +60,7 @@ function(Handlebars, Math2, DeckUtils) {
 						result = JST["strut.presentation_generator.impress/WebFrame"](componentModel);
 						break;
 					case "Shape":
-						result = JST["strut.presentation_generator.impress/Shape"](componentModel);
+						result = JST["slideSnapshot/draw/Shape"](componentModel);
 						break;
 				}
 				return new Handlebars.SafeString(result);
@@ -128,11 +128,23 @@ function(Handlebars, Math2, DeckUtils) {
 			// });
 
 			Handlebars.registerHelper("shapeSvg", function() {
-				if (this.fill && this.markup) {
-					var string = '<svg fill="' + this.fill + '" ' + this.markup.substring(4);
-					return new Handlebars.SafeString(string);
-				} else if (this.markup) {
-					return new Handlebars.SafeString(this.markup);
+				if (this.content) {
+					var string = '<svg style="'
+					if(this.width){
+						string += 'width:'+ this.width + 'px;';
+					}else{
+						string += 'width:120px;';
+					}
+					if(this.height){
+						string += 'height:'+ this.height + ';';
+					}else{
+						string += 'height:120px;';
+					}
+					if(this.color){
+						string += 'fill:' + this.color + ';'
+					}
+					string += this.content.substring(4);
+					return string;
 				} else
 					return '';
 			});

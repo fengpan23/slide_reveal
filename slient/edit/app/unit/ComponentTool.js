@@ -49,7 +49,7 @@ define(['libs/backbone',
 				var _this = this;
 				this.$el.find('.stepper-munber').each(function(idx, elem) {
 					var deltaDrag;
-					deltaDrag = new DeltaDragControl($(elem), true);
+					deltaDrag = new DeltaDragControl($(elem), false);
 					return _this._deltaDrags.push(deltaDrag);
 				});
 
@@ -95,7 +95,6 @@ define(['libs/backbone',
 				var _this = this;
 				this._spectrum = this.$el.find('.color-pick-trigger').spectrum({
 				    allowEmpty:true,
-				    color: "#ECC",
 				    showInput: true,
 				    containerClassName: "full-spectrum",
 				    showInitial: true,
@@ -113,11 +112,6 @@ define(['libs/backbone',
 				    },
 				    show: function () {
 				    	$('.sp-container').css({'left': '', 'right': 182});
-				    },
-				    hide: function (color) {
-				    	var rgbColor = color.toRgbString();
-				    	var nature = $(this).attr('data-nature');
-				    	_this.model.setChain(nature, rgbColor);
 				    },
 				    palette: [
 				        ["rgb(0, 0, 0)", "rgb(67, 67, 67)", "rgb(102, 102, 102)", "rgb(153, 153, 153)","rgb(183, 183, 183)",
@@ -139,10 +133,10 @@ define(['libs/backbone',
 			},
 
 			_triggerBorderStyle: function(e){
-				var _this, border, borderStyleValue = ['dotted', 'dashed', 'solid', 'double'];
+				var _this, data = {content: ['dotted', 'dashed', 'solid', 'double'], e: e};
 				_this = this;
 				border = this.model.get('border') || {};
-				this._toolbarPanel.show(e, borderStyleValue, function(value){
+				this._toolbarPanel.show(data, function(value){
 					$(e.currentTarget).html(value);
 					border.style = value;
 					_this.model.set('border', border);

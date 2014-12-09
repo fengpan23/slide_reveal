@@ -398,7 +398,7 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 
 .sp-palette {
     *width: 200px;
-    max-width: 200px;
+    max-width: 205px;
 }
 .sp-palette .sp-thumb-el {
     width:16px;

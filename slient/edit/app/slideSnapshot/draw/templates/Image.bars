@@ -1,7 +1,7 @@
 {{#attributes}}
 {{> ComponentContainer}}
 {{#if src}}
-	<img src="{{src}}" style="opacity: {{opacity}};" width="{{width}}">
+	<img src="{{src}}" style="opacity: {{opacity}};" width="{{width}}px">
 {{else}}
 	<div class="icon-picture"></div>
 {{/if}}

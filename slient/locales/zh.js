@@ -61,5 +61,6 @@ define({
 	style: '样式',
 	share: '分享',
 	setting: '设置',
+	chart: '图形',
 	create_presentation: '创建演示'
 });

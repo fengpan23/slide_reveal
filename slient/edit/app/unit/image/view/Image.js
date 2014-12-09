@@ -29,9 +29,7 @@ define(['../../ComponentView',
 				ComponentView.prototype.initialize.apply(this, arguments);
 
 				this.model.on('change:src', this._srcChanged, this);
-				this.model.on('change:opacity', this._opacityChanged, this);
 				this.model.on('change:width', this._widthChanged, this);
-				this.model.on('change:border', this._borderChanged, this);
 
 				this._toolTemplate = JST['unit/image/ComponentTool'];
 			},
@@ -55,20 +53,6 @@ define(['../../ComponentView',
 				});
 				this.$content.html(this.$img);
 				return this.$el;
-			},
-
-			_borderChanged: function(model, border){
-				border = border || model&&model.get('border') || this.model.get('border');
-				this.$img.css({
-					"border-color": border.color,
-					"border-style": border.style,
-					"border-width": border.width,
-					"border-radius": border.radius
-				});
-			},
-
-			_opacityChanged: function(model, opacity) {
-				this.$content.css("opacity", opacity);
 			},
 
 			_srcChanged: function(model, url){

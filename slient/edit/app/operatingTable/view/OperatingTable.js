@@ -2,8 +2,10 @@ define(['libs/backbone',
 		'app/unit/ComponentFactory',
 		'app/editor/GlobalEvents',
 		'app/deck/Utils',
-		'app/unit/ComponentModel'],
-function(Backbone, ComponentFactory, GlobalEvents, DeckUtils, Component) {
+		'app/unit/ComponentModel',
+		'communal/widgets/Guides',
+		],
+function(Backbone, ComponentFactory, GlobalEvents, DeckUtils, Component, Guides) {
 	
 	'use strict';
 	
@@ -59,16 +61,17 @@ function(Backbone, ComponentFactory, GlobalEvents, DeckUtils, Component) {
 			
 			//tow dimension code at heae
 //			this._$slideContainer.append(new TdimensionCode().render().$el);
-
-			// this._$slideContainer.selectable({
-			// 	filter: ".component",
-			// 	selected: function(event, ui) {
-			// 		$(ui.selected).trigger('select', ui);
-			// 	},
-			// 	unselected: function(event, ui) {
-			// 		$(ui.unselected).trigger('unselect', ui);
-			// 	}
-			// });
+			
+			// drag Multi-Object select 
+			this._$slideContainer.selectable({
+				filter: ".component",
+				selected: function(event, ui) {
+					$(ui.selected).trigger('select', ui);
+				},
+				unselected: function(event, ui) {
+					$(ui.unselected).trigger('unselect', ui);
+				}
+			});
 
 			var self = this;
 			setTimeout(function() {
@@ -77,6 +80,9 @@ function(Backbone, ComponentFactory, GlobalEvents, DeckUtils, Component) {
 				// self._renderContents();
 			}, 0);
 
+			//init guide lines, use at componentView
+			Guides.init(this._$slideContainer[0]);
+			
 			// this.$el.addClass((this._deck.get('surface') || 'bg-default'));
 			
 //			var rigthmenu = this._registry.getBest('strut.right_menu');
@@ -93,19 +99,19 @@ function(Backbone, ComponentFactory, GlobalEvents, DeckUtils, Component) {
 		// 	DeckUtils.applyBackground(this._$slideContainer, this.model, this._deck, {transparentForSurface: true, surfaceForDefault: true});
 		// },
 
-		_updateSurface: function(model, bg) {
-			bg = DeckUtils.slideSurface(model, this._deck);
-			if (bg) {
-				if (!DeckUtils.isImg(bg)) {
-					this.$el.css('background-image', '');
-					this.$el.removeClass();
-					// TODO: we can do this more intelligently
-					this.$el.addClass('center_body strut-surface ' + bg);
-				} else {
-					this.$el.css('background-image', DeckUtils.getImgUrl(bg));
-				}
-			}
-		},
+		// _updateSurface: function(model, bg) {
+		// 	bg = DeckUtils.slideSurface(model, this._deck);
+		// 	if (bg) {
+		// 		if (!DeckUtils.isImg(bg)) {
+		// 			this.$el.css('background-image', '');
+		// 			this.$el.removeClass();
+		// 			// TODO: we can do this more intelligently
+		// 			this.$el.addClass('center_body strut-surface ' + bg);
+		// 		} else {
+		// 			this.$el.css('background-image', DeckUtils.getImgUrl(bg));
+		// 		}
+		// 	}
+		// },
 
 		_cut: function() {
 			if (this._support.focusScope() == 'operatingTable') {
